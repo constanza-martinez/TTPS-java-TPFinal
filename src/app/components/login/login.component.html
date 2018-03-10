@@ -1,0 +1,13 @@
+
+<div class="login-container animated fadeIn">
+  <div class="container">
+    <form class="form-signin" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+        <h2 class="form-signin-heading">Acceder</h2>
+        <label for="inputNombre" class="sr-only">Usuario:</label>
+      <input type="text" id="inputNombre" name="inputNombre" class="form-control" placeholder="Nombre de Usuario" required  ngModel autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" name="inputPassword" class="form-control" placeholder="Contraseña" required ngModel>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button> 
+    </form>
+  </div>
+</div>

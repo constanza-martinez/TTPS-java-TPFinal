@@ -1,0 +1,19 @@
+<div class="login-container animated fadeIn">
+  <div class="container">
+  
+    <form class="form-signin">
+      <h2 class="form-signin-heading">Registrarse</h2>
+      <label for="inputNombre" class="sr-only">Nombre</label>
+      <input type="text" id="inputNombre" name="inputNombre" class="form-control" placeholder="Nombre" required [(ngModel)]="usuario.nombreUsuario" autofocus/><!-- agregar [(ngModule)] = usuario.email para enlazar -->
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email" [(ngModel)]="usuario.email" required/>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Contraseña" [(ngModel)]="usuario.password" required/>
+      
+      <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="addUsuario()">Registrarse</button>
+    </form>
+  </div>
+  <!--<div class="pre">
+    {{currentUsuario}}
+  </div> -->
+  </div>
