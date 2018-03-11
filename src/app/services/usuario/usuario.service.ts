@@ -17,7 +17,7 @@ export class UsuarioService {
       'content-type':'application/json',
     })
   };
-
+//sfadsdfad
 
 
   usr:any = {};
