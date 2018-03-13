@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   usuario: any = {};
 
-	
+	//inyecto servicio desde constructor
   constructor(private usuarioService:UsuarioService, private router: Router){}
 
   ngOnInit(){
@@ -20,11 +20,12 @@ export class RegisterComponent implements OnInit {
 
 
   addUsuario(){
-    //validar que usuario no este vacio
+    //falta validar que usuario no este vacio y demás cosas
     this.usuarioService.setUsuario(this.usuario).subscribe();
     this.router.navigate(['/home']);
   }
 
+  //función que hice mientras estaba probando
   get currentUsuario(){
   	return JSON.stringify(this.usuario);
   }

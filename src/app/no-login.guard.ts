@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
+//archivo para evitar entrar a paginas como login o register cuando uno ya esta logueado
+
 @Injectable()
 export class NoLoginGuard implements CanActivate {
 
@@ -10,7 +12,7 @@ export class NoLoginGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      if(localStorage.getItem('nombre')===null){
+      if(localStorage.getItem('token')===null){
         return true;
     }
     else{

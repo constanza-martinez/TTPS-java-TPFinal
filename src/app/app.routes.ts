@@ -5,7 +5,6 @@ import { AboutComponent } from './components/about/about.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { PruebaComponent } from './components/prueba/prueba.component';
-import { HomeUserComponent } from './components/home-user/home-user.component';
 import { LoginGuard } from './login.guard';
 import { NoLoginGuard } from './no-login.guard';
 
@@ -15,7 +14,6 @@ const app_routes: Routes = [
     {path:'login',component: LoginComponent, canActivate: [NoLoginGuard]},
     {path:'register',component: RegisterComponent, canActivate: [NoLoginGuard]},
     {path:'prueba',component: PruebaComponent},
-    {path:'home-user', component: HomeUserComponent, canActivate: [LoginGuard]},
     {path:'**', pathMatch: 'full', redirectTo: 'home'}
 ];
 

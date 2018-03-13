@@ -17,6 +17,6 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     this.storageService.deleteLocalStorage('token');
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home']);//luego de borrar el token redirecciono a home
   }
 }

@@ -3,6 +3,11 @@ import { HttpClient, HttpHeaders} from '@angular/common/http'
 import { Token } from '../../clases/token';
 import { Observable } from 'rxjs/Observable';
 
+//ofrece el servicio de operar sobre los usuarios, conectándose al api rest que hicimos. Tanto este servicio como los demás
+//se pueden inyectar en los componentes a través de su constructor, pero antes deben ser declarados
+//en la sección de providers del app.module (para que sea reconocida por todos los componentes) O en el módulo
+//de un componente en específico.
+
 @Injectable()
 export class UsuarioService {
 
@@ -24,18 +29,15 @@ export class UsuarioService {
 
   constructor(private http:HttpClient) { }
 
+
+  //las operaciones de http retornan observables, que sirven para que el navegador siga ejecutandose sin
+  //tener que esperar que la solicitud sea contestada
+
+
   getUser(id){
     let url = 'http://localhost:8080/gestorDeTareas/users/'+id;
     return this.http.get(url, this.httpOptions);
   }
-
-  /*setUsuario(usuario){
-    //this.usr = JSON.stringify(usuario);
-    console.log("llegue a set usuario");
-    //this.usr = {"email":"nombre2@email","nombreUsuario":"nombre2","password":"1111"}
-    let url = 'http://localhost:8080/entregable4/users';
-    return this.http.post(url,{"email":"nombre2@email","nombreUsuario":"nombre2","password":"1111"},this.httpOptions2);
-  }*/
 
   setUsuario(usuario){
     let url = 'http://localhost:8080/gestorDeTareas/users';
