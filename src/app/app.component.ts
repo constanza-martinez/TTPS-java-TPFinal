@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 //componente principal, en app.component.html estan cargados los demás componentes de la página
 @Component({
   selector: 'app-root', //tag html con el que identifico al componente

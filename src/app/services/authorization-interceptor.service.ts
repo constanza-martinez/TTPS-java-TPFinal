@@ -16,7 +16,7 @@ export class AuthorizationInterceptorService {
   
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Obtenemos el token
-    let token = "adfd";
+    let token = '';
     if(this.auth.getLocalStorage("token")!=null){
       token = this.auth.getLocalStorage("token");
     } 

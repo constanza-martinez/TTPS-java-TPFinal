@@ -2,5 +2,13 @@
 <h1>Mis datos</h1>
 </div>
 <p>
-  {{user | json}}
+  {{ user | json }}
+  {{ idUsuario }}
 </p>
+
+<div *ngIf="hero"; else null>
+	<div>  Proyectos: {{ proyectos }} </div>
+</div>
+
+<div #null>Aún no posee proyectos</div>
+

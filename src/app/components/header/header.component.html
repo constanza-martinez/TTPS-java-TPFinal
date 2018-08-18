@@ -14,8 +14,16 @@
       </li>-->
   
       <div *ngIf="storageService.getLocalStorage('token');else login"><!-- si esta logueado muestra logout sino entra en la etiqueta ng-template con el nombre #login asociado. Este nombre lo indique previamente despues del else-->
-        <li class="nav-item">
-            <a class="nav-link" routerLink="#" (click)="logout()">Cerrar sesión</a>
+        <!--<li class="nav-item">
+            <a class="nav-link" routerLink="#" (click)="logout()">Cerrar sesión</a>-->
+            <!--<a class="nav-link">{{ usuario.nombreUsuario }}</a>-->
+        <!--</li>-->
+        <li class="nav-item dropdown" id="menuUsuario">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{storageService.getLocalStorage('nombreU')}}</a>
+          <div class="dropdown-menu dropdown-menu-right bg-dark">
+            <a class="dropdown-item" href="#">Mis datos</a>
+            <a class="dropdown-item" routerLink="#" (click)="logout()">Cerrar sesión</a>
+          </div>
         </li>
       </div>
       <ng-template #login>

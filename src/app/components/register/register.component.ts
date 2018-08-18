@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
   addUsuario(form: NgForm){
     this.loading = true;
-    this.usuario = new Usuario(form.value.inputNombre,form.value.inputEmail,form.value.inputPassword);
+    this.usuario = new Usuario(null,form.value.inputNombre,form.value.inputEmail,form.value.inputPassword);
     this.usuarioService.setUsuario(this.usuario).subscribe(response =>{
       this.loading = false;
       this.flashMensaje.show('Se ha registrado correctamente!',{cssClass:'alert-success', timeout:4000});

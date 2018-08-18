@@ -1,10 +1,31 @@
 <main class="animated fadeIn mt-3" role="main home-container">
 
-    <div *ngIf="storageService.getLocalStorage('token');else vistaDeslogueado">
-        <a href="#">Mis proyectos...</a>
-  
+    <div *ngIf="storageService.getLocalStorage('token');then vistaLogueado, else vistaDeslogueado">
     </div>
-    
+
+    <ng-container #VistaLogueado>
+    <div class="container">
+      <div><h2>Proyectos</h2></div>
+
+      <modal-proyecto></modal-proyecto> <!-- tag del componente modal para crear un proyecto -->
+
+      <div *ngIf=" contiene else sinProyectos">
+        <div class="row">
+        <ul>
+          <li *ngFor="let proyecto of proyectos">
+            {{ proyecto.nombre }}
+          </li>
+        </ul>
+        </div>
+      </div>
+
+      <!--<div class="row" #SinProyectos>-->
+        <div [hidden]="contiene">
+          Aún no posee proyectos
+        </div>
+      </div>
+  </ng-container>
+
     <ng-template #vistaDeslogueado>
         <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">

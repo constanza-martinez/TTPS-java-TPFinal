@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http'
 import { Token } from '../../clases/token';
 import { Observable } from 'rxjs/Observable';
+import { catchError, map, tap } from 'rxjs/operators';
+import { Usuario } from '../../clases/usuario';
 import { StorageService } from '../storage/storage.service';
 
 
@@ -12,6 +14,9 @@ import { StorageService } from '../storage/storage.service';
 
 @Injectable()
 export class UsuarioService {
+
+  url = 'http://localhost:8080/gestorDeTareas/';
+
   constructor(private http:HttpClient, private auth: StorageService){}
 
   httpOptions = { 
@@ -29,7 +34,6 @@ export class UsuarioService {
   };
 //sfadsdfad
 
-
   usr:any = {};
 
   //constructor(private http:HttpClient) { }
@@ -40,22 +44,30 @@ export class UsuarioService {
 
 
   getUser(id){
-    let url = 'http://localhost:8080/gestorDeTareas/users/'+id;
+    let url = this.url + 'users/' + id;
     return this.http.get(url,this.httpOptions);
   }
 
-  misDatos(){
-    let url = 'http://localhost:8080/gestorDeTareas/user';
-    return this.http.get(url,this.httpOptions);
+  /*misDatos(): Observable<Usuario>{ //le tengo que pasar en el header el token?
+    let url = this.url + 'user';
+    return this.http.get<Usuario>(url,{headers: this.getHeaders()})
+    .pipe(
+        map(usuarios => usuarios[0]), // returns a {0|1} element array
+      );
+  }*/
+
+  misDatos():Observable<Usuario>{
+    let url = this.url + 'user';
+    return this.http.get<Usuario>(url, this.httpOptions);
   }
 
   setUsuario(usuario){
-    let url = 'http://localhost:8080/gestorDeTareas/users';
+    let url = this.url + 'users';
     return this.http.post(url,usuario,this.httpOptions2); 
   }
 
   loginUsuario(usuario){
-    let url = 'http://localhost:8080/gestorDeTareas/autenticacion';
+    let url = this.url + 'autenticacion';
     return this.http.post(url,usuario,this.httpOptions2);
     
   }

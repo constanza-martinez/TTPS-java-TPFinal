@@ -5,7 +5,7 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { Router } from '@angular/router';
 import { FlashMessagesService} from 'angular2-flash-messages';
 import { HttpErrorResponse } from '@angular/common/http';
-
+import { StorageService } from '../../services/storage/storage.service';
 
 @Component({
   selector: 'app-login',    //tag html con el que identifico al componente
@@ -16,7 +16,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private usuarioService: UsuarioService,
              private router: Router,
-             public flashMensaje: FlashMessagesService) { }
+             public flashMensaje: FlashMessagesService,
+             private storageService: StorageService
+             ) { }
 
   ngOnInit() {
   }
@@ -31,9 +33,11 @@ export class LoginComponent implements OnInit {
 //y el parámetro reponse dentro del suscribe es lo que devolvió la función loginUsuario().
   login(form: NgForm){
     this.loading = true;
-    this.usuario = new Usuario(form.value.inputNombre,"",form.value.inputPassword);
+    this.usuario = new Usuario(null,form.value.inputNombre,"",form.value.inputPassword);
     this.usuarioService.loginUsuario(this.usuario).subscribe(response =>{
         localStorage.setItem('token',response['token']);
+        this.storageService.setLocalStorage('usuario', response['idUsuario']);
+        this.storageService.setLocalStorage('nombreU', response['nombre']); //Poner el nombre que tiene el getter no el nombre de la variable
         this.router.navigate(['/home']);
         this.loading = false;
       },
