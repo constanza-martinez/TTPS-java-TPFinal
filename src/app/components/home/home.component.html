@@ -1,63 +1,81 @@
 <main class="animated fadeIn mt-3" role="main home-container">
 
-    <div *ngIf="storageService.getLocalStorage('token');then vistaLogueado, else vistaDeslogueado">
+  <div *ngIf="storageService.getLocalStorage('token')">
+  
+  <div class="container">
+    <div><h2>Proyectos</h2></div>
+
+    <modal-proyecto></modal-proyecto> <!-- tag del componente modal para crear un proyecto -->
+
+    <div *ngIf=" contiene else sinProyectos">
+  
+      <div class="table-responsive">
+      <div class="table table-striped">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let proyecto of proyectos">
+              <td class="col-md-4">{{proyecto.nombre}}</td>
+              <td class="col-md-8">
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <button class="btn btn-sm btn-secondary" title="Ver">Ver</button>
+                    <button class="btn btn-sm btn-warning" title="Ver">Editar</button>
+                    <button class="btn btn-sm btn-danger" title="Ver">Elimiinar</button>
+                  </div>
+              </td>
+            </tr>
+          </tbody>
+      </div>
+      </div>
+      </div>
+    <!--<div class="row" #SinProyectos>-->
+      <div [hidden]="contiene">
+        Aún no posee proyectos
+      </div>
+    </div>
+</div>
+
+  <div *ngIf="!storageService.getLocalStorage('token')">
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Bienvenido!</h1>
+      <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+      <p><a class="btn btn-primary btn-lg" routerLink="../register" role="button">Registrarse ahora &raquo;</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Heading</h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Heading</h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Heading</h2>
+        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+      </div>
     </div>
 
-    <ng-container #VistaLogueado>
-    <div class="container">
-      <div><h2>Proyectos</h2></div>
+    <hr>
+ </div> <!-- /container -->
+</div>
 
-      <modal-proyecto></modal-proyecto> <!-- tag del componente modal para crear un proyecto -->
 
-      <div *ngIf=" contiene else sinProyectos">
-        <div class="row">
-        <ul>
-          <li *ngFor="let proyecto of proyectos">
-            {{ proyecto.nombre }}
-          </li>
-        </ul>
-        </div>
-      </div>
 
-      <!--<div class="row" #SinProyectos>-->
-        <div [hidden]="contiene">
-          Aún no posee proyectos
-        </div>
-      </div>
-  </ng-container>
 
-    <ng-template #vistaDeslogueado>
-        <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron">
-      <div class="container">
-        <h1 class="display-3">Bienvenido!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" routerLink="../register" role="button">Registrarse ahora &raquo;</a></p>
-      </div>
-    </div>
-  
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-      </div>
-  
-      <hr>
-   </div> <!-- /container -->
-    </ng-template>
+
 
 </main>

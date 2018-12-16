@@ -35,6 +35,7 @@ export class HomeComponent implements OnInit {
   	this.proyectoService.getProyectos().subscribe(proyectos => {this.proyectos = proyectos; 
       if (this.proyectos.length > 0) {
         this.contiene = true;
+        console.log(this.proyectos);
       }
     });
   }

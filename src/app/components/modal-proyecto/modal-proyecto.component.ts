@@ -11,7 +11,8 @@ import { Proyecto } from '../../clases/proyecto';
 })
 export class ModalProyectoComponent implements OnInit {
 	today: Number = Date.now();
-	proyecto: Proyecto;
+  proyecto: Proyecto;
+  modalReference;
 
   constructor(private modalService: NgbModal,
   			  private proyectoService: ProyectoService) {}
@@ -20,8 +21,7 @@ export class ModalProyectoComponent implements OnInit {
   }
 
   open(content) {
-    this.modalService.open(content);
-    	console.log(this.today);
+    this.modalReference=this.modalService.open(content);
   }
 
 
@@ -30,7 +30,11 @@ export class ModalProyectoComponent implements OnInit {
   	console.log(datos.value.nombre);
   	console.log(datos.value.fechaInicio);
   	this.proyecto = new Proyecto(null, datos.value.nombre, datos.value.fechaInicio, datos.value.fechaFin);
-  	this.proyectoService.setProyecto(this.proyecto).subscribe(response => { /*this.modalService.close();*/});
+  	this.proyectoService.setProyecto(this.proyecto).subscribe(
+      response => { /*this.modalService.close();*/}
+      ,error=>{}
+      ,() =>{ this.modalReference.close()}
+    );
   }
 
 }
