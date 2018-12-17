@@ -38,6 +38,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PruebaComponent } from './components/prueba/prueba.component';
 import { ModalProyectoComponent } from './components/modal-proyecto/modal-proyecto.component';
 import { ModalVerProyectoComponent } from './components/modal-ver-proyecto/modal-ver-proyecto.component';
+import { ModalEditarProyectoComponent } from './components/modal-editar-proyecto/modal-editar-proyecto.component';
 
 
 
@@ -54,6 +55,7 @@ import { ModalVerProyectoComponent } from './components/modal-ver-proyecto/modal
     PruebaComponent,
     ModalProyectoComponent,
     ModalVerProyectoComponent,
+    ModalEditarProyectoComponent,
   ],
   imports: [
     BrowserModule,

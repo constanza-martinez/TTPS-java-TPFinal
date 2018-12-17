@@ -5,7 +5,7 @@
   <div class="container">
     <div><h2>Proyectos</h2></div>
 
-    <modal-proyecto></modal-proyecto> <!-- tag del componente modal para crear un proyecto -->
+    <modal-proyecto [proyectos]="proyectos"></modal-proyecto> <!-- tag del componente modal para crear un proyecto -->
 
     <div *ngIf=" contiene else sinProyectos">
   
@@ -23,7 +23,7 @@
               <td class="col-md-8">
                   <div class="btn-group" role="group" aria-label="Basic example">
                     <modal-ver-proyecto [proyecto]="proyecto"></modal-ver-proyecto>
-                    <button class="btn btn-sm btn-warning" title="Ver">Editar</button>
+                    <modal-editar-proyecto [proyect]="proyecto" [proyectos]="proyectos"></modal-editar-proyecto>
                     <button class="btn btn-sm btn-danger" title="Ver">Elimiinar</button>
                   </div>
               </td>

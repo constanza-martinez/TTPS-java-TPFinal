@@ -27,6 +27,11 @@ export class ProyectoService {
     setProyecto(proyecto){
     let url = this.url + 'proyectos';
     return this.http.post(url,proyecto,this.httpOptions); 
-    }
+	}
+	
+	updateProyecto(proyecto){
+		let url = this.url + 'proyecto/'+ proyecto.id;
+		return this.http.put(url,proyecto,this.httpOptions);
+	}
 
 }

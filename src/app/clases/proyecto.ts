@@ -7,4 +7,16 @@ export class Proyecto {
 		public fechaFinalizacion:string,
 		public propietarioID?:string
 	){}
+
+	setNombre(nombre){
+		this.nombre = nombre;
+	}
+
+	setFechaInicio(fechaInicio){
+		this.fechaInicio = fechaInicio;
+	}
+
+	setFechaFinalizacion(fechaFinalizacion){
+		this.fechaFinalizacion = fechaFinalizacion;
+	}
 }

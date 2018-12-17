@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 import { ProyectoService } from '../../services/proyecto/proyecto.service';
@@ -12,6 +12,7 @@ import { Proyecto } from '../../clases/proyecto';
 export class ModalProyectoComponent implements OnInit {
 	today: Number = Date.now();
   proyecto: Proyecto;
+  @Input() proyectos;//arreglo de proyectos que se muestra en el home
   modalReference;
 
   constructor(private modalService: NgbModal,
@@ -33,7 +34,9 @@ export class ModalProyectoComponent implements OnInit {
   	this.proyectoService.setProyecto(this.proyecto).subscribe(
       response => { /*this.modalService.close();*/}
       ,error=>{}
-      ,() =>{ this.modalReference.close()}
+      ,() =>{ 
+        this.proyectos.push(this.proyecto);//además de actualizar la bd, actualizo el arreglo del home, asi no tengo que recargar la página para ver el nuevo proyecto
+        this.modalReference.close()}
     );
   }
 

@@ -1,0 +1,36 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Editar proyecto</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <form (ngSubmit)="onSubmit(proyectoForm)" #proyectoForm="ngForm">
+      <div class="form-group">
+        <label for="nombre">Nombre del proyecto (requerido):</label>
+        <input type="text" class="form-control ng-touched" id="nombre" required name="nombre" [ngModel] = "proyect.nombre">
+      </div>
+ 
+      <div class="form-group">
+        <label for="fechaInicio">Fecha incio:</label>
+        <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" [ngModel] ="proyect.fechaInicio | date:'yyyy-MM-dd'">
+      </div>
+
+      <div class="form-group">
+        <label for="fechaFin">Fecha fin:</label>
+        <input type="date" class="form-control" id="fechaFin" name="fechaFin"  [ngModel] = "proyect.fechaFinalizacion | date: 'yyyy-MM-dd'">
+      </div>
+      <!-- Los corchetes se usan en variables u opciones del html para agregar datos o cambiarlos -->
+      <button type="submit" class="btn btn-outline-warning" [disabled]="!proyectoForm.form.valid">Actualizar</button>
+          <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Cancelar</button>
+    </form>
+
+  </div>
+  <div class="modal-footer">
+
+  </div>
+</ng-template>
+
+<button class="btn btn-sm btn-warning" (click)="open(content)"><span class="glyphicon glyphicon-plus-sign"></span>Editar</button>

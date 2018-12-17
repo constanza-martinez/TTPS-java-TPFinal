@@ -14,7 +14,7 @@ import { ModalProyectoComponent } from '../modal-proyecto/modal-proyecto.compone
 
 export class HomeComponent implements OnInit {
   token = localStorage.getItem('token');
-  proyectos: Proyecto[];
+  proyectos: Proyecto[] = [];
   contiene: Boolean = false;
 
   constructor(public storageService:StorageService,
@@ -32,7 +32,12 @@ export class HomeComponent implements OnInit {
   }
 
   getProyectos(){
-  	this.proyectoService.getProyectos().subscribe(proyectos => {this.proyectos = proyectos; 
+    this.proyectoService.getProyectos().subscribe(response => {//this.proyectos = proyectos;
+      response.forEach(element => {
+        this.proyectos.push(
+          new Proyecto(element.id,element.nombre,element.fechaInicio,element.fechaFinalizacion, null)
+        );
+      });
       if (this.proyectos.length > 0) {
         this.contiene = true;
         console.log(this.proyectos);
