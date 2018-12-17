@@ -5,9 +5,10 @@
   <div class="container">
     <div><h2>Proyectos</h2></div>
 
-    <modal-proyecto [proyectos]="proyectos"></modal-proyecto> <!-- tag del componente modal para crear un proyecto -->
+    <modal-proyecto [proyectos]="proyectos"></modal-proyecto> <!-- tag del componente modal para crear un proyecto, -->
+    <!--ENTRE CORCHETES PUSE LA VARIABLE PROYECTOS, QUE VA A SER ENVIADA COMO PARÁMETRO HACIA MODAL-PROYECTO-->
 
-    <div *ngIf=" contiene else sinProyectos">
+    <div *ngIf="proyectos.length > 0">
   
       <div class="table-responsive">
       <div class="table table-striped">
@@ -24,7 +25,7 @@
                   <div class="btn-group" role="group" aria-label="Basic example">
                     <modal-ver-proyecto [proyecto]="proyecto"></modal-ver-proyecto>
                     <modal-editar-proyecto [proyect]="proyecto" [proyectos]="proyectos"></modal-editar-proyecto>
-                    <button class="btn btn-sm btn-danger" title="Ver"><i class="fas fa-trash-alt"></i> Elimiinar</button>
+                    <modal-eliminar-proyecto [proyectos]="proyectos" [id]="proyecto.id" [nombreProyecto]="proyecto.nombre"></modal-eliminar-proyecto>
                   </div>
               </td>
             </tr>
@@ -32,8 +33,8 @@
       </div>
       </div>
       </div>
-    <!--<div class="row" #SinProyectos>-->
-      <div [hidden]="contiene">
+      <!--<div [hidden]="contiene">-->
+      <div *ngIf="proyectos.length == 0">
         Aún no posee proyectos
       </div>
     </div>

@@ -39,6 +39,7 @@ import { PruebaComponent } from './components/prueba/prueba.component';
 import { ModalProyectoComponent } from './components/modal-proyecto/modal-proyecto.component';
 import { ModalVerProyectoComponent } from './components/modal-ver-proyecto/modal-ver-proyecto.component';
 import { ModalEditarProyectoComponent } from './components/modal-editar-proyecto/modal-editar-proyecto.component';
+import { ModalEliminarProyectoComponent } from './components/modal-eliminar-proyecto/modal-eliminar-proyecto.component';
 
 
 
@@ -56,6 +57,7 @@ import { ModalEditarProyectoComponent } from './components/modal-editar-proyecto
     ModalProyectoComponent,
     ModalVerProyectoComponent,
     ModalEditarProyectoComponent,
+    ModalEliminarProyectoComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,23 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Eliminar proyecto</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <p>¿Está seguro que desea eliminar el proyecto <strong>{{nombreProyecto}}</strong>?</p>
+      <!-- Los corchetes se usan en variables u opciones del html para agregar datos o cambiarlos -->
+      <button type="button" class="btn btn-outline-danger" (click)="removeProyecto(id)">Eliminar</button>
+      <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Cancelar</button>
+   
+
+  </div>
+  <div class="modal-footer">
+
+  </div>
+</ng-template>
+
+<button class="btn btn-sm btn-danger" (click)="open(content)"><i class="fas fa-trash-alt"></i> Eliminar</button>
+
