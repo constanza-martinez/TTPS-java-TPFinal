@@ -37,6 +37,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PruebaComponent } from './components/prueba/prueba.component';
 import { ModalProyectoComponent } from './components/modal-proyecto/modal-proyecto.component';
+import { ModalVerProyectoComponent } from './components/modal-ver-proyecto/modal-ver-proyecto.component';
 
 
 
@@ -52,6 +53,7 @@ import { ModalProyectoComponent } from './components/modal-proyecto/modal-proyec
     FooterComponent,
     PruebaComponent,
     ModalProyectoComponent,
+    ModalVerProyectoComponent,
   ],
   imports: [
     BrowserModule,

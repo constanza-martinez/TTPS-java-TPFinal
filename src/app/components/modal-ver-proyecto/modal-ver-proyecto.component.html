@@ -1,0 +1,20 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Datos del proyecto</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <p>Nombre: {{proyecto.nombre}}</p>
+    <p>Fecha de inicio: {{proyecto.fechaInicio | date: 'yyyy-MM-dd' }}</p>
+    <p>Fecha de finalización: {{proyecto.fechaFinalizacion | date: 'yyyy-MM-dd' }}</p>
+    <p>Propietario: {{proyecto.propietario.nombreUsuario}}</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="d()">Cerrar</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-sm btn-secondary" (click)="open(content)"><span class="glyphicon glyphicon-plus-sign"></span>Ver proyecto</button>

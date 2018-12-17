@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { StorageService } from '../../services/storage/storage.service';
 import { UsuarioService } from '../../services/usuario/usuario.service';
 import { ProyectoService } from '../../services/proyecto/proyecto.service';
