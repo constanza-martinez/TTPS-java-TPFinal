@@ -23,7 +23,7 @@
         <input type="date" class="form-control" id="fechaFin" name="fechaFin" min="{{today | date: 'yyyy-MM-dd'}}" ngModel>
       </div>
       <!-- Los corchetes se usan en variables u opciones del html para agregar datos o cambiarlos -->
-      <button type="submit" class="btn btn-outline-info" [disabled]="!proyectoForm.form.valid">Crear</button>
+      <button type="submit" class="btn btn-outline-success" [disabled]="!proyectoForm.form.valid">Crear</button>
           <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Cancelar</button>
     </form>
 
@@ -33,6 +33,6 @@
   </div>
 </ng-template>
 
-<button class="btn btn-outline-info" (click)="open(content)"><span class="glyphicon glyphicon-plus-sign"></span>Nuevo proyecto</button>
+<button class="btn btn-outline-success" (click)="open(content)"><i class="fas fa-plus"></i> Nuevo proyecto</button>
 
 <hr>
