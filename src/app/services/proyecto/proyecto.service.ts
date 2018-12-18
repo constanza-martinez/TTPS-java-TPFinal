@@ -34,4 +34,9 @@ export class ProyectoService {
 		return this.http.put(url,proyecto,this.httpOptions);
 	}
 
+	deleteProyecto(id){
+		let url = this.url + 'proyecto/'+id;
+		return this.http.delete(url,this.httpOptions);
+	}
+
 }
